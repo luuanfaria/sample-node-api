@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
       res.end(JSON.stringify(body))
     }
 
-    if (req.method === 'POST' || req.method === 'PUT') {
+    if (['POST', 'PUT', 'PATCH'].includes(req.method)) {
       bodyParser(req, () => route.handler(req, res))
     } else {
       route.handler(req, res)
